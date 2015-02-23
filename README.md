@@ -192,4 +192,4 @@ T4<-data.frame(t(tAc1),t(tAc2),t(tAc11),t(tAc22),t(StAc1),t(StAc2),t(StAc11),t(S
 rownames(T4)<-frs[,2]
 ##Saving Data in text File
 setwd("C:/Users/Tinoco/Google Drive/2. Research (Current)/(2015) Especialization in Data Science/3. Getting and Cleaning Data/Programming Project")
-write.table(T4,"DataMeanSd.txt")
+write.table(T4,"DataMeanSd.txt",row.name=FALSE)
