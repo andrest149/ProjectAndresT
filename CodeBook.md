@@ -12,3 +12,7 @@
 ### Variable Mean_Activity_Test in T4-> It is Mean for each activity of Test measures
 ### Variable Sd_Activity_Train in T4-> It is standard deviation for each activity of Train measures
 ### Variable Sd_Activity_Test in T4-> It is standard deviation for each activity of Test measures
+### Variable Mean_Subject_Train in T4-> It is Mean for each Subject of Train measures
+### Variable Mean_Subject_Test in T4-> It is Mean for each Subject of Test measures
+### Variable Sd_Subject_Train in T4-> It is standard deviation for each Subject of Train measures
+### Variable Sd_Subject_Test in T4-> It is standard deviation for each subject of Test measures
