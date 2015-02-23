@@ -107,7 +107,7 @@ DimT2=length(T2[,1])
 ## Completing the Dataset
 T1[(DimT1+1):DimT2,]<-NA
 ##Merge data T1 and T2
-#T1[T1[,1]==1,1]<-"WALKING"
+
 
 # Activity 1
 T3<-merge(T1,T2,by=intersect(names(T1),names(T2)),all=TRUE)
