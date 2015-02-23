@@ -1,6 +1,6 @@
 # ProjectAndresT
 This is a repository with a project proposed by Getting and Cleaning Data Course 
-
+#Searching the main path where data are saved
 setwd("C:/Users/Tinoco/Google Drive/2. Research (Current)/(2015) Especialization in Data Science/3. Getting and Cleaning Data/Programming Project/UCI HAR Dataset")
 frs<-read.table("features.txt")
 AcLabel<-read.table("activity_labels.txt")
@@ -14,7 +14,7 @@ X1<-read.table("X_test.txt")
 Y1=read.table("Y_test.txt")
 p=paste0(getwd(),"/Inertial Signals")
 
-## Changing Path
+# Changing Path
 setwd(p)
 #######################################
 AccBxTe<-read.table("body_acc_x_test.txt")
@@ -112,17 +112,14 @@ T1[(DimT1+1):DimT2,]<-NA
 ##### Activity 1
 T3<-merge(T1,T2,by=intersect(names(T1),names(T2)),all=TRUE)
 
-#### Means
+#### Means and Standar deviation 
 
 Mean2<-apply(T3[1:DimT2,2:562],2,mean)
 Mean1<-apply(T3[(DimT2+1):(DimT2+DimT1),2:562],2,sd)
 Sd2<-apply(T3[1:DimT2,2:562],2,mean)
 Sd1<-apply(T3[(DimT2+1):(DimT2+DimT1),2:562],2,sd)
 
-#Act2<-matrix(rep(T3[1:DimT2,1],561), ncol = 561)
-#Act2<-data.frame(Act2)
-
-##
+#Activity 4
 Ac2 <- matrix(0, ncol=6, nrow=561 )
 Ac2<-data.frame(Ac2)
 Ac1 <- matrix(0, ncol=6, nrow=561 )
@@ -142,6 +139,9 @@ SAc22 <- matrix(0, ncol=max(Strain), nrow=561 )
 SAc22<-data.frame(SAc22)
 SAc11 <- matrix(0, ncol=max(Stest), nrow=561 )
 SAc11<-data.frame(SAc11)
+
+
+# Calculating mean and standard deviation of Activities and Subjects
 
 for(i in 1:561){
   ###
@@ -190,6 +190,6 @@ rownames(StAc11)<-colnames(matrix(0,nrow=1,ncol=24), do.NULL = FALSE, prefix = "
 
 T4<-data.frame(t(tAc1),t(tAc2),t(tAc11),t(tAc22),t(StAc1),t(StAc2),t(StAc11),t(StAc22))
 rownames(T4)<-frs[,2]
-####3
+####Saving Data in text File
 setwd("C:/Users/Tinoco/Google Drive/2. Research (Current)/(2015) Especialization in Data Science/3. Getting and Cleaning Data/Programming Project")
 write.table(T4,"DataMeanSd.txt")
