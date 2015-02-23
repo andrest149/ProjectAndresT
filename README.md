@@ -106,13 +106,13 @@ T2=data.frame(Y2,X2)
 DimT2=length(T2[,1])
 ## Completing the Dataset
 T1[(DimT1+1):DimT2,]<-NA
-#### Merge data T1 and T2
+##Merge data T1 and T2
 #T1[T1[,1]==1,1]<-"WALKING"
 
-##### Activity 1
+# Activity 1
 T3<-merge(T1,T2,by=intersect(names(T1),names(T2)),all=TRUE)
 
-#### Means and Standar deviation 
+## Means and Standar deviation 
 
 Mean2<-apply(T3[1:DimT2,2:562],2,mean)
 Mean1<-apply(T3[(DimT2+1):(DimT2+DimT1),2:562],2,sd)
@@ -144,12 +144,12 @@ SAc11<-data.frame(SAc11)
 # Calculating mean and standard deviation of Activities and Subjects
 
 for(i in 1:561){
-  ###
+  
 Ac2[i,1:5]<-tapply(T3[1:DimT2,(i+1)],T3[1:DimT2,1],mean)
 Ac1[i,1:6]<-tapply(T3[(DimT2+1):(DimT2+DimT1),(i+1)],T3[(DimT2+1):(DimT2+DimT1),1],mean)
 Ac22[i,pos2[,1]]<-tapply(T3[1:DimT2,(i+1)],Strain,mean)
 Ac11[i,pos1[,1]]<-tapply(T3[(DimT2+1):(DimT2+DimT1),(i+1)],Stest,mean)
-###
+
 SAc2[i,1:5]<-tapply(T3[1:DimT2,(i+1)],T3[1:DimT2,1],sd)
 SAc1[i,1:6]<-tapply(T3[(DimT2+1):(DimT2+DimT1),(i+1)],T3[(DimT2+1):(DimT2+DimT1),1],sd)
 SAc22[i,pos2[,1]]<-tapply(T3[1:DimT2,(i+1)],Strain,sd)
@@ -168,28 +168,28 @@ StAc22=t(SAc22)
 StAc11=t(SAc11)
 ##############################
 
-#colnames(tAc2)<-frs[,2]
+colnames(tAc2)<-frs[,2]
 rownames(tAc2)<-colnames(matrix(0,nrow=1,ncol=6), do.NULL = FALSE, prefix="Mean_Activity_Train")
-#colnames(tAc1)<-frs[,2]
+colnames(tAc1)<-frs[,2]
 rownames(tAc1)<-colnames(matrix(0,nrow=1,ncol=6), do.NULL = FALSE, prefix="Mean_Activity_Test")
-#colnames(tAc22)<-frs[,2]
+colnames(tAc22)<-frs[,2]
 rownames(tAc22)<- colnames(matrix(0,nrow=1,ncol=30), do.NULL = FALSE, prefix="Mean_Subject_Train")
-#colnames(tAc11)<-frs[,2]
+colnames(tAc11)<-frs[,2]
 rownames(tAc11)<-colnames(matrix(0,nrow=1,ncol=24), do.NULL = FALSE, prefix = "Mean_Subject_Test")
 
-#colnames(StAc2)<-frs[,2]
+colnames(StAc2)<-frs[,2]
 rownames(StAc2)<-colnames(matrix(0,nrow=1,ncol=6), do.NULL = FALSE, prefix="Sd_Activity_Train")
-#colnames(StAc1)<-frs[,2]
+colnames(StAc1)<-frs[,2]
 rownames(StAc1)<-colnames(matrix(0,nrow=1,ncol=6), do.NULL = FALSE, prefix="Sd_Activity_Test")
-#colnames(StAc22)<-frs[,2]
+colnames(StAc22)<-frs[,2]
 rownames(StAc22)<- colnames(matrix(0,nrow=1,ncol=30), do.NULL = FALSE, prefix="Sd_Subject_Train")
-#colnames(StAc11)<-frs[,2]
+colnames(StAc11)<-frs[,2]
 rownames(StAc11)<-colnames(matrix(0,nrow=1,ncol=24), do.NULL = FALSE, prefix = "Sd_Subject_Test")
 
 ####################################
 
 T4<-data.frame(t(tAc1),t(tAc2),t(tAc11),t(tAc22),t(StAc1),t(StAc2),t(StAc11),t(StAc22))
 rownames(T4)<-frs[,2]
-####Saving Data in text File
+##Saving Data in text File
 setwd("C:/Users/Tinoco/Google Drive/2. Research (Current)/(2015) Especialization in Data Science/3. Getting and Cleaning Data/Programming Project")
 write.table(T4,"DataMeanSd.txt")
